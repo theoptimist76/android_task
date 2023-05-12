@@ -70,7 +70,8 @@ public class LoginActivity extends AppCompatActivity {
         assert imageView != null;
         imageView.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startDialog();
+
+             startDialog();
             }
 
         });
@@ -178,10 +179,10 @@ public class LoginActivity extends AppCompatActivity {
 
                         Intent intent = new Intent(
                                 MediaStore.ACTION_IMAGE_CAPTURE);
-                        File f = new File(android.os.Environment
-                                .getExternalStorageDirectory(), "temp.jpg");
-                        intent.putExtra(MediaStore.EXTRA_OUTPUT,
-                                Uri.fromFile(f));
+//                        File f = new File(android.os.Environment
+//                                .getExternalStorageDirectory(), "temp.jpg");
+//                        intent.putExtra(MediaStore.EXTRA_OUTPUT,
+//                                Uri.fromFile(f));
 
                         startActivityForResult(intent,
                                 CAMERA_REQUEST);
