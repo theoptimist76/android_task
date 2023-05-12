@@ -68,13 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         final ProgressBar loadingProgressBar = binding.loading;
         final  ImageView imageView=binding.myAvatarImageview;
         assert imageView != null;
-        imageView.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-             startDialog();
-            }
-
-        });
+        imageView.setOnClickListener(v -> startDialog());
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -159,18 +153,16 @@ public class LoginActivity extends AppCompatActivity {
         myAlertDialog.setMessage("How do you want to set your picture?");
 
         myAlertDialog.setPositiveButton("Gallery",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        Intent pictureActionIntent = null;
+                (arg0, arg1) -> {
+                    Intent pictureActionIntent = null;
 
-                        pictureActionIntent = new Intent(
-                                Intent.ACTION_PICK,
-                                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                        startActivityForResult(
-                                pictureActionIntent,
-                                GALLERY_PICTURE);
+                    pictureActionIntent = new Intent(
+                            Intent.ACTION_PICK,
+                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(
+                            pictureActionIntent,
+                            GALLERY_PICTURE);
 
-                    }
                 });
 
         myAlertDialog.setNegativeButton("Camera",
